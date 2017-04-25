@@ -1,5 +1,5 @@
 #!/bin/bash
-<<<<<<< HEAD
+=======
 FILE=`dirname $0`/COPYING
 #license
 zenity --text-info \
@@ -139,14 +139,32 @@ case $? in
 	;;
 esac
 =======
+function comment () {
+ls -1 $load*.* > .imagefiles.tmp
+
+while read imgfile
+do
+	extract_name
+	convert -comment "$comment" $imgfile.$format
+
+done < .imagefiles.tmp
+rm .imagefiles.tmp
+}
+
 function rotate () {
 	ls -1 $load*.* > .imagefiles.tmp
+>>>>>>> upstream/master
 
-	while read imgfile
-	do
 
-		convert -rotate $valuerotate $imgfile $imgfile
+while read imgfile
+do
+	extract_name
+	convert -comment "$comment" $imgfile.$format
 
+<<<<<<< HEAD
+done < .imagefiles.tmp
+rm .imagefiles.tmp
+=======
 	done < .imagefiles.tmp
 	rm imagefiles.tmp
 }
@@ -234,5 +252,6 @@ function image-edit () {
 
 	done < .imagefiles.tmp
 	rm .imagefiles.tmp
+>>>>>>> upstream/master
 }
 >>>>>>> upstream/master
